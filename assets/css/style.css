@@ -1,0 +1,46 @@
+/*font-family: 'Uncial Antiqua', cursive;
+font-family: 'Lora', serif;*/
+
+* {
+	color:white;
+}
+
+body {
+	font-family: 'Lora', serif;
+	text-align: center;
+	margin: 0 auto;
+	color:white;
+	background-color: black;
+}
+
+.center-panel {
+	border: 1px solid grey;
+}
+
+h1 {
+	font-family: 'Uncial Antiqua', cursive;
+	text-align: center;
+	font-size: 50px;
+}
+
+h2 {
+	font-family: 'Uncial Antiqua', cursive;
+}
+
+header {
+	background-color: black;
+	margin: 0 100px;
+}
+
+.main-content {
+	margin: 0 100px;
+	background-color: black;
+}
+
+#livesLeft{
+  font-size:1.6em;
+  text-align:center;
+  display:block;
+  color:white;
+}
+

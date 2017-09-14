@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="us-en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lora|Uncial+Antiqua" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/img/got.ico" type="image/x-icon">
+</head>
+
+<body>
+    <section id="top" class="container top">
+        <div class="row">
+            <div class="col-md-12">
+            <h1 class="text-center">Game Of Words</h1>
+            <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2>When you play the Game of Words, you <i>win</i> or you <i>die</i>.</h2>
+            
+                    <h4 id="start">Press any key to start.</h4>
+                    </div>
+                 </div>
+            </div>
+        </div>
+</section>
+
+<section class="text-center">
+        <!-- Hangman game -->
+        <div class="row">
+            <div class="col-md-2 left-panel">
+                <p>Lives Left<p>
+                        <p id="livesLeft"></p>
+                        <p>Letters Guessed</p>
+                        <p id="guessed"></p>
+            </div>
+            <div class="col-md-8 center-panel">
+                <p id="tag">This is not the day I die.</p>
+                <div id="placeholder"></div>
+                <div id="buttons">
+                    <button id="newGame" class="btn" onClick="newGame">New Game</button>
+                    <button id="reset" class="btn" onClick="reset">Reset</button>
+                </div>
+            </div>
+            <div class="col-md-2 right-panel">
+                <p>Wins</p>
+                <p id="wins">0</p>
+                <p>Losses</p>
+                <p id="losses">0</p>
+            </div>
+        </div>
+        <audio src="assets/audio/21-Game-of-Thrones.m4a" autoplay loop></audio>
+        </section>
+    
+    
+
+   <script type="text/javascript" src="assets/js/hangman.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
