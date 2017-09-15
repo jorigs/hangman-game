@@ -21,7 +21,8 @@
                     <div class="col-md-12 text-center">
                         <h2>When you play the Game of Words, you <i>win</i> or you <i>die</i>.</h2>
             
-                    <h4 id="start">Press any key to start.</h4>
+                    <h4 id="hint">Press any key to make your claim.</h4>
+                    <br>
                     </div>
                  </div>
             </div>
@@ -38,11 +39,13 @@
                         <p id="guessed"></p>
             </div>
             <div class="col-md-8 center-panel">
-                <p id="tag">This is not the day I die.</p>
                 <div id="placeholder"></div>
+                <br>
+                <p id="tag">This is not the day I die.</p>
                 <div id="buttons">
-                    <button id="newGame" class="btn" onClick="newGame">New Game</button>
-                    <button id="reset" class="btn" onClick="reset">Reset</button>
+                    <button id="newGame" class="btn" onClick="newGame()">New Game</button>
+                    <button id="reset" class="btn" onClick="reset()">Reset</button>
+                    <br>
                 </div>
             </div>
             <div class="col-md-2 right-panel">

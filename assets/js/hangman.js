@@ -1,6 +1,6 @@
 // "use strict";
 
-var wordList = ['arya','cersei','jon','daenerys','tyrion','sansa','ned','joffrey','hound','jaime','hodor'];
+var names = ['arya','cersei','jon','daenerys','tyrion','sansa','ned','joffrey','hound','jaime','hodor'];
 var chosenName = "";
 var wordLength = [];
 var blanksNeeded = 0;
@@ -20,6 +20,7 @@ var show = document.querySelector('#guessed');
 var count = document.querySelector('#livesLeft');
 var loseCount = document.querySelector('#losses');
 var winCount = document.querySelector('#wins');
+var hint = document.querySelector('#hint');
 
 
 // Console Log Key Pressed
@@ -29,29 +30,44 @@ document.onkeypress = function (event) {
 }
 
 function playGame() {
-	newName();{
+	newName();
+}
+
+var o = function(key,val) {
+  console.log(key, val)
+}
 
 function newName() {
-	chosenName = wordList[Math.floor(Math.random() * wordList.length)];
+	chosenName = names[Math.floor(Math.random() * names.length)];
 
   wordLength = chosenName.replace(/\s/g, "-").split("");
-  blanksNeeded = wordLength.Length;
-
+  blanksNeeded = wordLength.length;
+  o("blanksShown: ", blankShown)
+  blankShown = []
+  // was a global variable, needed to be reset to local within the function. Needed to be set as empty before new game.
+  o("blanksNeeded: ", blanksNeeded)
   // add blanks
-  for (var i = 0; i < blanks; i++) {
+  for (var i = 0; i < blanksNeeded; i++) {
+    o("wordLength in loop: ", wordLength[i])
     if (wordLength[i] === "-" || wordLength[i] === " ") {
-      blankShown.innerHTML("&nbsp;");
+      blankShown.push("&nbsp;");
       space += 1;
     } else {
-      blankShown.innerHTML("_");
+      blankShown.push("_");
     }
-    wordSpace.innerHTML = blankShown;
   }
-}
+    // wordSpace.innerHTML = blankShown;
+o("blanksShow after loop: ", blankShown)
+o("wordSpace: ", wordSpace)
+
+  var stringWord = blankShown.join();
+
+  o("stringWord: ", stringWord)
+  wordSpace.innerHTML = stringWord.replace(/,/g, "&nbsp;");
 }
 
 // Guessed Letters
-function guessed() {
+function guessedLetters() {
   if (guessed.indexOf(userGuess) === -1) {
     guessed.push(userGuess);
   } else if (guessed.indexOf(userGuess) > -1) {
@@ -60,13 +76,19 @@ function guessed() {
   show.innerHTML = guessed.toString();
 }
 
-function checkLetters() {
-  $(chosenWord.split("")).each(function (index, character) {
-    if (character === userGuess) {
-      blankShown[index] = userGuess;
+function checkLetters(letter) {
+  chosenName.split("").forEach(function (char, index) {
+    o("character: ", char)
+    o("letter: ", letter)
+    if (char === letter) {
+      blankShown[index] = letter;
       wordSpace.innerHTML = blankShown;
       correct++;
     }
+
+    /*
+      update index of array with all blanks so it contains a char on the same index
+    */
   })
 }
 
@@ -74,6 +96,17 @@ function guessCount() {
   count.innerHTML = guessRemain;
   count.onkeyup = guessRemain--;
 }
+
+
+// make function to update letters div
+/*
+function update(arrayOfLetters) {
+  // TODO: select div to update
+  // TODO: join array 
+  // TODO: replace content of selected div with joined array
+}
+
+*/
 
 function reset() {
     wins = 0;
@@ -88,6 +121,8 @@ function reset() {
     show.innerHTML = guessed;
     guessRemain = 10;
     count.innerHTML = guessRemain;
+    hint.innerHTML = "People who could help or hurt you when playing for the throne?";
+    tag.innderHTML = "This is not the day I die.";
     playGame();
 }
 
@@ -130,12 +165,47 @@ function winLost() {
     losses++;
     loseCount.innerHTML = losses;
   }
+  else if (guessRemain <1 && chosenName === "tyrion") {
+    alert("You know nothing, Jon Snow.");
+    losses++;
+    loseCount.innerHTML = losses;
+  }
+  else if (guessRemain <1 && chosenName === "sansa") {
+    alert("You know nothing, Jon Snow.");
+    losses++;
+    loseCount.innerHTML = losses;
+  }
+  else if (guessRemain <1 && chosenName === "ned") {
+    alert("You know nothing, Jon Snow.");
+    losses++;
+    loseCount.innerHTML = losses;
+  }
+  else if (guessRemain <1 && chosenName === "joffrey") {
+    alert("You know nothing, Jon Snow.");
+    losses++;
+    loseCount.innerHTML = losses;
+  }
+  else if (guessRemain <1 && chosenName === "hound") {
+    alert("You know nothing, Jon Snow.");
+    losses++;
+    loseCount.innerHTML = losses;
+  }
+  else if (guessRemain <1 && chosenName === "jaime") {
+    alert("You know nothing, Jon Snow.");
+    losses++;
+    loseCount.innerHTML = losses;
+  }
+  else if (guessRemain <1 && chosenName === "hodor") {
+    alert("You know nothing, Jon Snow.");
+    losses++;
+    loseCount.innerHTML = losses;
+  }
 }
 
 playGame();
 
 document.onkeyup = function (event) {
-  hint.innerHTML = "People who could help or hurt you when playing for the throne?";
+  hint.innerHTML = ("People who could help or hurt you when playing for the throne?");
 
   userGuess = event.key.toLowerCase();
 
@@ -143,9 +213,9 @@ document.onkeyup = function (event) {
 
   winLost ();
 
-  checkLetters();
+  checkLetters(userGuess);
 
-  guessed();
+  //guessed();
 }
 
 
